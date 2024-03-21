@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Registrazione giornale</title>
-        <link rel="stylesheet" type="text/css" href="../css/login.css" />
+        <link rel="stylesheet" type="text/css" href="../css/registrazione.css" />
     </head>
     <body>
         <div class="container">

@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard Admin</title>
+    <title>Dashboard Admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php
-    include '../php/config-db.php';
     session_start();
+    include '../php/config-db.php';
+    include '../php/common.php';
+    
+    if(!check_user_logged_in()){
+        header("Location: login.php");
+    }
+    
     try {
         $query = "SHOW COLUMNS FROM Abbonamenti LIKE 'Periodicita'";
         $stmt = $conn->prepare($query);
@@ -21,6 +27,7 @@
         echo "Errore: " . $e->getMessage();
     }
 ?>
+
 <div class="container mt-5">
     <h2>Aggiungi Pubblicazione</h2>
     <form action="../php/aggiungi_pubblicazione.php" method="POST">
@@ -45,5 +52,6 @@
         <button type="submit" class="btn btn-primary">Aggiungi</button>
     </form>
 </div>
+
 </body>
 </html>

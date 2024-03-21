@@ -6,8 +6,14 @@
 </head>
 <body>
     <?php
+    session_start();
+    include '../php/common.php';
         include '../php/config-db.php';
         include '../php/header.php';
+        if(!check_user_logged_in()){
+            header("Location: login.php");
+            exit(); 
+        }
         try {
             $query = "SELECT titolo, PeriodicitaPubb, ArgomentoPubblicazione FROM Pubblicazioni";
             $stmt = $conn->prepare($query);
@@ -16,8 +22,6 @@
         } catch(PDOException $e) {
             echo "Errore: " . $e->getMessage();
         }
-    ?>
-        <?php
           foreach ($pubblicazioni as $pubblicazione) {
             echo '<div class="Articolo-Box">';
             echo '<p>' . $pubblicazione['titolo'] . '</p>';
@@ -25,7 +29,8 @@
             echo '<p>' . $pubblicazione['PeriodicitaPubb'] . '</p>';
             echo '<img src="#">';
             echo '</div>';
-        }        
+        } 
+            include '../php/footer.php';
         ?>
     </div>
 </body>
