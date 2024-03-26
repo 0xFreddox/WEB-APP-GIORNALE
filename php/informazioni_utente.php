@@ -5,7 +5,7 @@ session_start();
 
 if(isset($_SESSION['user_id'])) {
     $username = $_SESSION['username'];
-    $query = "SELECT Id_utente FROM Utenti WHERE username = :username";
+    $query = "SELECT username FROM Utenti WHERE Id_utente = :Id_utente";
     
     // Prepara e esegui la query
     $stmt = $conn->prepare($query);

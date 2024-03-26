@@ -19,10 +19,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ) {
     }
 
     $Periodicita = $_POST['Periodicita'];
-    $query = "INSERT INTO Abbonamenti (Id_Utente, Periodicita) VALUES (:Id_utente, :Periodicita)";
+    $data_abbonamento = date("Y-m-d H:i:s");
+    $query = "INSERT INTO Abbonamenti (Id_Utente, Periodicita,data_abbonamento) VALUES (:Id_utente, :Periodicita,:data_abbonamento)";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':Periodicita', $Periodicita);
     $stmt->bindParam(":Id_utente", $Id_utente);
+    $stmt->bindParam(":data_abbonamento", $data_abbonamento);
     $stmt->execute();
 
     if($stmt->rowCount() > 0) {

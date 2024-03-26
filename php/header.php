@@ -1,3 +1,6 @@
+<?php
+  include_once 'common.php';
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -22,7 +25,13 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Dashboard.php">Dashboard Pubblicazioni</a>
+        <?php
+          if(check_user_is_admin()){
+            echo '<a class="nav-link" href="Dashboard.php">Dashboard Pubblicazioni</a>';
+          } else{
+          echo '<a class="nav-link" href="#">Coming soon...</a>';
+          }
+        ?>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,7 +47,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Cerca pubblciazione" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca...</button>
+      <a href="../html/Accounts.php">Account</a>
     </form>
   </div>
 </nav>

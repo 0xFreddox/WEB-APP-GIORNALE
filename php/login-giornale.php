@@ -18,7 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if($user) {
         $Id_utente = $user["Id_utente"];
+        $isAdmin = $user['isAdmin'];
         $_SESSION['Id_utente'] = $Id_utente;
+        $_SESSION['isAdmin'] = $isAdmin;
         header("Location: ../html/Abbonamento.php");
         //header("Location: informazioni_utente.php");
         exit();

@@ -1,7 +1,7 @@
 <?php
    $servername = "localhost";
-   $username = "root";
-   $password = "root";
+   $username = "web_giornale";
+   $password = "passwordprova";
    $dbname = "web_giornale";
   
    
